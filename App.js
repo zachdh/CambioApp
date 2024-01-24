@@ -1,10 +1,9 @@
-import { Text, SafeAreaView, StyleSheet, Image, Button, TextInput, Alert} from 'react-native';
+import { Text, View, SafeAreaView, StyleSheet, Image, Pressable, TextInput, Alert} from 'react-native';
 
 import React, {useState} from 'react'
 
 // or any files within the Snack
 import AssetExample from './components/AssetExample';
-import Square from './components/square.js';
 
 export default function App() {
 
@@ -17,9 +16,11 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.cambioTitle} source={require('./assets/cambio_curved.png')} />
-      <Square>
-        <Button style={styles.button} title = "Play!" />
-      </Square>
+      <View style={styles.buttonBackground}>
+        <Pressable style={styles.button}>
+          <Text>Play</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 }
@@ -39,7 +40,10 @@ const styles = StyleSheet.create({
     height: 128,
   },
   button: {
-    border: 5,
-    backgroundColor: 'beige'
+    width: 300,
+    height: 148,
+    justifyItems: 'center',
+    backgroundColor: '#C3B994',
+    borderRadius: 30,
   },
 });
