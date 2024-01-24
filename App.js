@@ -12,15 +12,15 @@ export default function App() {
   const sayHi = () => {
     Alert.alert("Hi" + name)
   }
+  export default function Button(props)
+  const { onPress, title= 'save' } = props
 
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.cambioTitle} source={require('./assets/cambio_curved.png')} />
-      <View style={styles.buttonBackground}>
-        <Pressable style={styles.button}>
-          <Text>Play</Text>
-        </Pressable>
-      </View>
+      <Pressable style={styles.button} onPress={onPress}>
+        <Text style={styles.text}>Play</Text>
+      </Pressable>
     </SafeAreaView>
   );
 }
@@ -34,16 +34,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#006E3B'
   },
   cambioTitle: {
+    alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 100,
-    width: 256,
-    height: 128,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
   },
   button: {
-    width: 300,
-    height: 148,
-    justifyItems: 'center',
-    backgroundColor: '#C3B994',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
     borderRadius: 30,
+    elevation: 3,
+    backgroundColor: '#C3B994',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });
