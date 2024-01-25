@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 
 // or any files within the Snack
 import PlayButton from './components/PlayButton.js'
-
+import HowToPlayButton from './components/HowToPlayButton.js';
 
 
 export default function App() {
@@ -20,7 +20,8 @@ export default function App() {
       <Image 
         style={styles.cambioTitle} 
         source={require('./assets/cambio_curved.png')} />
-      <PlayButton></PlayButton>
+      <PlayButton/>
+      <HowToPlayButton/>
     </SafeAreaView>
   );
 }
@@ -28,15 +29,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
+    position: 'relative',
     padding: 8,
-    backgroundColor: '#006E3B'
+    backgroundColor: '#006E3B',
+    minHeight: 150,
   },
   cambioTitle: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
+    marginLeft: -15,
   },
 });
