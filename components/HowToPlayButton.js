@@ -1,9 +1,15 @@
 import React from 'react'
 import {Text, Pressable, StyleSheet} from 'react-native'
 
+import {useFonts} from 'expo-font'
+
 export default function HowToPlayButton(props){ 
 
-    const { onPress, title= 'How to Play' } = props;
+  const [Font] = useFonts({
+    'Miltonian Tattoo': require('./../assets/fonts/MiltonianTattoo-Regular.ttf')
+  });
+  
+  const { onPress, title= 'How to Play' } = props;
     return(
       <Pressable style={[styles.button, styles.shadowProp]} onPress={(onPress)}>
         <Text style={styles.text}>{title}</Text>
@@ -25,6 +31,7 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 40,
       alignSelf:'center',
+      fontFamily: 'Miltonian Tattoo',
       paddingTop: 10,
       paddingBottom: 10,
       color: '#FAF9F6',

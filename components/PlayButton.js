@@ -1,15 +1,20 @@
 import React from 'react'
 import {Text, Pressable, StyleSheet} from 'react-native'
 
-export default function PlayButton(props){ 
+import {useFonts} from 'expo-font'
 
-    const { onPress, title= 'Play' } = props;
-    return(
-      <Pressable style={[styles.button, styles.shadowProp]} onPress={(onPress)}>
-        <Text style={styles.text}>{title}</Text>
-      </Pressable>
-    );
-  }
+export default function PlayButton(props){ 
+  const [fonts] = useFonts({
+      'Miltonian Tattoo': require('./../assets/fonts/MiltonianTattoo-Regular.ttf'),
+  });
+
+  const { onPress, title= 'Play' } = props;
+  return(
+    <Pressable style={[styles.button, styles.shadowProp]} onPress={(onPress)}>
+      <Text style={styles.text}>{title}</Text>
+    </Pressable>
+  );
+}
 
 const styles = StyleSheet.create({
     button: {
@@ -25,6 +30,7 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 100,
       alignSelf:'center',
+      fontFamily: 'Miltonian Tattoo',
       paddingTop: 10,
       paddingBottom: 10,
       color: '#FAF9F6',
