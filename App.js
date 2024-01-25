@@ -20,6 +20,8 @@ export default function App() {
       <Image 
         style={styles.cambioTitle} 
         source={require('./assets/cambio_curved.png')} />
+      <Image
+        source={require('./assets/gifs/dancing_cat.gif')}/>
       <PlayButton/>
       <HowToPlayButton/>
     </SafeAreaView>
