@@ -3,10 +3,12 @@ import { Text, View, SafeAreaView, StyleSheet, Image, TextInput, Alert} from 're
 import React, {useState} from 'react'
 
 // or any files within the Snack
-import AssetExample from './components/AssetExample';
 import PlayButton from './components/PlayButton.js'
 
+
+
 export default function App() {
+
   const [name, setName] = useState('')
 
   const sayHi = () => {

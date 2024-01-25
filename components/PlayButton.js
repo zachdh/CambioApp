@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Text, Pressable, StyleSheet} from 'react-native'
 
 export default function PlayButton(props){ 
+
     const { onPress, title= 'Play' } = props;
     return(
       <Pressable style={styles.button} onPress={(onPress)}>
@@ -23,8 +24,7 @@ const styles = StyleSheet.create({
     },
     text: {
       fontSize: 100,
-      fontWeight: 'bold',
-      letterSpacing: 0.25,
-      color: '#FAF9F6',
+      textAlign: 'center',
+      color: 'black',
     },
 });
