@@ -22,10 +22,10 @@ export default function PlayButton(props){
     loadFonts();
   }, []);
 
-  if (!fontsLoaded) {
-    // You can render a loading indicator or return null while the fonts are loading
-    return null;
-  }
+ if (!fontsLoaded) {
+   // You can render a loading indicator or return null while the fonts are loading
+   return null;
+ }
 
   //customize pressable
   const { onPress, title= 'Play' } = props;
