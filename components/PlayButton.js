@@ -30,7 +30,7 @@ export default function PlayButton(props){
   //customize pressable
   const { onPress, title= 'Play' } = props;
   return(
-    <Pressable style={[styles.button, styles.shadowProp]} onPress={(onPress)}>
+    <Pressable style={({ pressed }) => [styles.button, styles.shadowProp, { marginBottom : pressed ? 120 : 124 }, { shadowOffset: {width: 0, height : pressed ? 6 : 10}}]} onPress={(onPress)}>
       <Text style={styles.text}>{title}</Text>
     </Pressable>
   );
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       bottom: 0,
       alignSelf: 'center',
-      marginBottom: 118,
       width: 300,
       height: 148,
       borderRadius: 30,
@@ -56,9 +55,8 @@ const styles = StyleSheet.create({
       color: '#FAF9F6',
     },
     shadowProp: {
-      shadowColor: 'black',
-      shadowOffset: {width: 0, height: 10},
-      shadowOpacity: 0.5,
-      shadowRadius: 3,
+      shadowColor: '#94896a',
+      shadowOpacity: 1,
+      shadowRadius: 0,
     },
 });
