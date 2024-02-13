@@ -2,11 +2,59 @@ import { Text, View, SafeAreaView, StyleSheet, Image, TextInput, Alert} from 're
 import React, {useState, useEffect} from 'react'
 import * as Font from 'expo-font'
 
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // or any files within the Snack
 import PlayButton from './components/PlayButton.js'
 import HowToPlayButton from './components/HowToPlayButton.js';
 
+function Home({navigation}) {
+  return(
+    <SafeAreaView style={styles.container}>
+    <Text style={[styles.title, styles.shadowProp, styles.r1]}>
+      C
+    </Text>
+    <Text style={[styles.title, styles.shadowProp, styles.r2]}>
+      a
+    </Text>
+    <Text style={[styles.title, styles.shadowProp, styles.r3]}>
+      m
+    </Text>
+    <Text style={[styles.title, styles.shadowProp, styles.r4]}>
+      b
+    </Text>
+    <Text style={[styles.title, styles.shadowProp, styles.r5]}>
+      i
+    </Text>
+    <Text style={[styles.title, styles.shadowProp, styles. r6]}>
+      o
+    </Text>
+    <Image 
+      style={styles.banner}
+      source={require('./assets/banner.png')} />
+    <Image 
+      style={styles.dancingCat}
+      source={require('./assets/gifs/dancing_cat.gif')}/>
+    <PlayButton onPress={() => navigation.navigate('Game')}/>
+    <HowToPlayButton onPress={() => navigation.navigate('Rules')}/>
+  </SafeAreaView>
+  );
+}
 
+function Game(){
+  return(
+    <Text>Explore page</Text>
+  );
+}
+
+function Rules(){
+  return(
+    <Text> Settings Page </Text>
+  );
+}
+
+const Tab = createNativeStackNavigator();
 export default function App() {
   //async loading font
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -26,46 +74,18 @@ export default function App() {
 
     loadFonts();
   }, []);
-
  if (!fontsLoaded) {
    // You can render a loading indicator or return null while the fonts are loading
    return null;
  }
-
-
-  const sayHi = () => {
-    Alert.alert("Hi" + name)
-  }
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={[styles.title, styles.shadowProp, styles.r1]}>
-        C
-      </Text>
-      <Text style={[styles.title, styles.shadowProp, styles.r2]}>
-        a
-      </Text>
-      <Text style={[styles.title, styles.shadowProp, styles.r3]}>
-        m
-      </Text>
-      <Text style={[styles.title, styles.shadowProp, styles.r4]}>
-        b
-      </Text>
-      <Text style={[styles.title, styles.shadowProp, styles.r5]}>
-        i
-      </Text>
-      <Text style={[styles.title, styles.shadowProp, styles. r6]}>
-        o
-      </Text>
-      <Image 
-        style={styles.banner}
-        source={require('./assets/banner.png')} />
-      <Image 
-        style={styles.dancingCat}
-        source={require('./assets/gifs/dancing_cat.gif')}/>
-      <PlayButton/>
-      <HowToPlayButton/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name = "Home" component = {Home} />
+        <Tab.Screen name = "Game" component = {Game} />
+        <Tab.Screen name = "Rules" component = {Rules} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
