@@ -1,4 +1,4 @@
-import { Text, View, SafeAreaView, StyleSheet, Image, TextInput, Alert} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, Image, Button, ImageBackground} from 'react-native';
 import React, {useState, useEffect} from 'react'
 import * as Font from 'expo-font'
 
@@ -8,49 +8,57 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // or any files within the Snack
 import PlayButton from './components/PlayButton.js'
 import HowToPlayButton from './components/HowToPlayButton.js';
+import ReturnButton from './components/ReturnButton.js'
 
 function Home({navigation}) {
   return(
     <SafeAreaView style={styles.container}>
-    <Text style={[styles.title, styles.shadowProp, styles.r1]}>
-      C
-    </Text>
-    <Text style={[styles.title, styles.shadowProp, styles.r2]}>
-      a
-    </Text>
-    <Text style={[styles.title, styles.shadowProp, styles.r3]}>
-      m
-    </Text>
-    <Text style={[styles.title, styles.shadowProp, styles.r4]}>
-      b
-    </Text>
-    <Text style={[styles.title, styles.shadowProp, styles.r5]}>
-      i
-    </Text>
-    <Text style={[styles.title, styles.shadowProp, styles. r6]}>
-      o
-    </Text>
-    <Image 
-      style={styles.banner}
-      source={require('./assets/banner.png')} />
-    <Image 
-      style={styles.dancingCat}
-      source={require('./assets/gifs/dancing_cat.gif')}/>
-    <PlayButton onPress={() => navigation.navigate('Game')}/>
-    <HowToPlayButton onPress={() => navigation.navigate('Rules')}/>
-  </SafeAreaView>
+      <Text style={[styles.title, styles.shadowProp, styles.r1]}>
+        C
+      </Text>
+      <Text style={[styles.title, styles.shadowProp, styles.r2]}>
+        a
+      </Text>
+      <Text style={[styles.title, styles.shadowProp, styles.r3]}>
+        m
+      </Text>
+      <Text style={[styles.title, styles.shadowProp, styles.r4]}>
+        b
+      </Text>
+      <Text style={[styles.title, styles.shadowProp, styles.r5]}>
+        i
+      </Text>
+      <Text style={[styles.title, styles.shadowProp, styles. r6]}>
+        o
+      </Text>
+      <Image 
+        style={styles.banner}
+        source={require('./assets/banner.png')} />
+      <Image 
+        style={styles.dancingCat}
+        source={require('./assets/gifs/dancing_cat.gif')}/>
+      <PlayButton onPress={() => navigation.navigate('Game')}/>
+      <HowToPlayButton onPress={() => navigation.navigate('Rules')}/>
+    </SafeAreaView>
   );
 }
 
-function Game(){
+function Game({navigation}){
   return(
-    <Text>Explore page</Text>
+    <SafeAreaView>
+      <Text>Explore page</Text>
+      <Button title="Return" onPress = {() => navigation.navigate('Home')} />
+    </SafeAreaView>
   );
 }
 
-function Rules(){
+function Rules({navigation}){
   return(
-    <Text> Settings Page </Text>
+    <SafeAreaView>
+      <ReturnButton></ReturnButton>
+      <Button style={styles.returnHome} title="Return" onPress = {() => navigation.navigate('Home')} />
+      <ImageBackground source={require('./assets/rulesPage.png')} resizeMode="cover" style={styles.rulesPage} />
+    </SafeAreaView>
   );
 }
 
@@ -79,11 +87,11 @@ export default function App() {
    return null;
  }
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name = "Home" component = {Home} />
-        <Tab.Screen name = "Game" component = {Game} />
-        <Tab.Screen name = "Rules" component = {Rules} />
+    <NavigationContainer >
+      <Tab.Navigator screenOptions={{ animation: 'none' }}>
+        <Tab.Screen name = "Home" options={{headerShown : false}} component = {Home} />
+        <Tab.Screen name = "Game" options={{headerShown : false }} component = {Game} />
+        <Tab.Screen name = "Rules" options={{headerShown : false }} component = {Rules} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -106,6 +114,12 @@ const styles = StyleSheet.create({
   dancingCat: {
     position: 'absolute',
     marginTop: 240,
+    alignSelf: 'center',
+  },
+  rulesPage: {
+    position: 'absolute',
+    width: 400,
+    height: 900,
     alignSelf: 'center',
   },
   banner: {
