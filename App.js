@@ -46,8 +46,8 @@ function Home({navigation}) {
 function Game({navigation}){
   return(
     <SafeAreaView>
-      <Text>Explore page</Text>
-      <Button title="Return" onPress = {() => navigation.navigate('Home')} />
+      <Text style={{marginTop: 40}}>Explore page</Text>
+      <ReturnButton onPress={() => navigation.navigate('Home')}></ReturnButton>
     </SafeAreaView>
   );
 }
@@ -55,8 +55,7 @@ function Game({navigation}){
 function Rules({navigation}){
   return(
     <SafeAreaView>
-      <ReturnButton></ReturnButton>
-      <Button style={styles.returnHome} title="Return" onPress = {() => navigation.navigate('Home')} />
+      <ReturnButton onPress={() => navigation.navigate('Home')}></ReturnButton>
       <ImageBackground source={require('./assets/rulesPage.png')} resizeMode="cover" style={styles.rulesPage} />
     </SafeAreaView>
   );
