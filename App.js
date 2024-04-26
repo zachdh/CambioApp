@@ -1,3 +1,5 @@
+//npx expo start, then press "i" to open the IOS simulator
+
 import { Text, SafeAreaView, StyleSheet, Image, Button, ImageBackground} from 'react-native';
 import React, {useState, useEffect} from 'react'
 import * as Font from 'expo-font'
